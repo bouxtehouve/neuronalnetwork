@@ -4,12 +4,12 @@
 
 
 class Network{
-
+	typedef std::vector<Neuron> Layer;
 public:
-	Network(const std::vector<unsigned> &topology);
-	void feedForward(const std::vector<double> &inputVals);
-	void backProp(const std::vector<double> &targetVals){};
-	void getResults(std::vector<double> &resultVals)const{};
+	Network(const std::vector<unsigned> &architecture,const TransfertFunction &transfertFunction);
+	void feedForwardNetwork(const std::vector<double> &inputVals);
+	void backPropNetwork(const std::vector<double> &targetVals);
+	void getResultsNetwork(std::vector<double> &resultVals);
 private:
 	std::vector <Layer> m_layers;
 	double m_error;

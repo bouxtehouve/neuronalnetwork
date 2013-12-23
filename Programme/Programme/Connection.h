@@ -1,9 +1,5 @@
 
 
-struct Connection{
-	double weight;
-	double deltaWeight;
-};
 
 class Connection{
 

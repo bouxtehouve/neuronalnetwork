@@ -4,29 +4,32 @@
 #include <cstdlib>
 #include <cassert>
 #include <cmath>
+#include "TransfertFunction_Tan.h"
 
 using namespace std;
 
 
 int main(){
 
+	TransfertFunction_Tan *t;
 
+	cout<<	t->value(10);
 
-	vector<unsigned> topology;
-	topology.push_back(3);
-	topology.push_back(2);
-	topology.push_back(1);
+	//vector<unsigned> topology;
+	//topology.push_back(3);
+	//topology.push_back(2);
+	//topology.push_back(1);
 
-	Network myNet(topology);
+	//network mynet(topology);
 
-	vector<double> inputVals;
-	myNet.feedForward(inputVals);
+	//vector<double> inputvals;
+	//mynet.feedforward(inputvals);
 
-	vector<double> targetVals;
-	myNet.backProp(targetVals);
+	//vector<double> targetvals;
+	//mynet.backprop(targetvals);
 
-	vector<double> resultVals;
-	myNet.getResults(resultVals);
+	//vector<double> resultvals;
+	//mynet.getresults(resultvals);
 
 	int n;
 	cin>>n;

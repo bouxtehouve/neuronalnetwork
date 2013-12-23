@@ -1,0 +1,31 @@
+﻿Build started 23/12/2013 11:59:37.
+     1>Project "C:\Users\Martin\Documents\GitHub\neuronalnetwork\Programme\Programme\Programme.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Programmes\Microsoft Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp Network.cpp Neuron.cpp
+         Neuron.cpp
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C2146: syntax error : missing ';' before identifier 'm_transfertFunction'
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(56): error C2039: 'transfertFunctionDerivative' : is not a member of 'Neuron'
+                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(9) : see declaration of 'Neuron'
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(56): error C3861: 'transfertFunctionDerivative': identifier not found
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(61): error C2039: 'transfertFunctionDerivative' : is not a member of 'Neuron'
+                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(9) : see declaration of 'Neuron'
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(61): error C3861: 'transfertFunctionDerivative': identifier not found
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(73): error C2039: 'transfertFunction' : is not a member of 'Neuron'
+                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(9) : see declaration of 'Neuron'
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(73): error C3861: 'transfertFunction': identifier not found
+         Network.cpp
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C2146: syntax error : missing ';' before identifier 'm_transfertFunction'
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(74): error C2601: 'Network::feedForward' : local function definitions are illegal
+                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(27): this line contains a '{' which has not yet been matched
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(92): fatal error C1075: end of file found before the left brace '{' at 'c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(27)' was matched
+         Main.cpp
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C2146: syntax error : missing ';' before identifier 'm_transfertFunction'
+     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+         Generating Code...
+     1>Done Building Project "C:\Users\Martin\Documents\GitHub\neuronalnetwork\Programme\Programme\Programme.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.99

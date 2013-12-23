@@ -1,16 +1,56 @@
 #include "Network.h"
+#include <vector>
+#include <iostream>
+#include "TransfertFunction.h"
+#include <cassert>
 
 using namespace std;
 
 
-void Network::getResults(vector<double> &resultVals) const{
+Network::Network(const vector<unsigned> &architecture,const TransfertFunction &transfertFunction){
+	unsigned numLayers=architecture.size();
+	for(unsigned layerNum=0;layerNum < numLayers;++layerNum){
+		m_layers.push_back(Layer());
+		unsigned numOutputs= layerNum==architecture.size()-1? 0: architecture[layerNum+1];
+		for(unsigned neuronNum=0; neuronNum<=architecture[layerNum];++neuronNum){
+			m_layers.back().push_back(Neuron(numOutputs,neuronNum,transfertFunction));
+			cout << "Made a Neuron!"<<endl;
+		}
+	}
+}
+
+
+//This function sends the output value obtained by the neuron network with the last inputs entered
+void Network::getResultsNetwork(vector<double> &resultVals){
 	resultVals.clear();
 	for(unsigned n = 0; n < m_layers.back().size() - 1; ++n){
 		resultVals.push_back(m_layers.back()[n].getOutputVal());
 	}
 }
 
-void Network::backProp(const vector<double> &targetVals){
+
+//This function updates the output values for each neuron in each layer according 
+//to a set of input values
+void Network::feedForwardNetwork(const vector<double> &inputVals){
+	assert(inputVals.size()== m_layers[0].size() - 1);
+
+	//Assign the input values into the input neurons
+	for (unsigned i=0;i<inputVals.size();++i){
+		m_layers[0][i].setOutputVal(inputVals[i]);
+	}
+
+	//Forward propragate
+	for(unsigned layerNum=1;layerNum < m_layers.size();++layerNum){
+		Layer &prevLayer=m_layers[layerNum - 1];
+		for(unsigned n = 0; n< m_layers[layerNum].size() - 1;++n){
+			m_layers[layerNum][n].feedForwardNeuron(prevLayer);
+		}
+	}
+}
+
+
+//This function does the backPropagation of the neural network
+void Network::backPropNetwork(const vector<double> &targetVals){
 	// Calculate overall net error 'RMS of the output neuron errors)
 	Layer &outputLayer = m_layers.back();
 	m_error = 0.0;
@@ -44,7 +84,6 @@ void Network::backProp(const vector<double> &targetVals){
 			hiddenLayer[n].calcHiddenGradients(nextLayer);
 		}
 	}
-
 	// For all layers from outputs to first hidden layer.
 	// update connection weights
 	for( unsigned layerNum = m_layers.size() - 1; layerNum > 0; --layerNum){
@@ -56,33 +95,4 @@ void Network::backProp(const vector<double> &targetVals){
 
 }
 
-Network::Network(const vector<unsigned> &topology){
-	unsigned numLayers=topology.size();
-	for(unsigned layerNum=0;layerNum < numLayers;++layerNum){
-		m_layers.push_back(Layer());
-		unsigned numOutputs= layerNum==topology.size()-1? 0: topology[layerNum+1];
-		for(unsigned neuronNum=0; neuronNum<=topology[layerNum];++neuronNum){
-			m_layers.back().push_back(Neuron(numOutputs,neuronNum));
-			cout << "Made a Neuron!"<<endl;
-		}
-	}
-}
 
-void Network::feedForward(const vector<double> &inputVals){
-	assert(inputVals.size()== m_layers[0].size() - 1);
-
-	//Assign the input values into the input neurons
-	for (unsigned i=0;i<inputVals.size();++i){
-		m_layers[0][i].setOutputVal(inputVals[i]);
-	}
-
-	//Forward propragate
-	for(unsigned layerNum=1;layerNum < m_layers.size();++layerNum){
-		Layer &prevLayer=m_layers[layerNum - 1];
-		for(unsigned n = 0; n< m_layers[layerNum].size() - 1;++n){
-			m_layers[layerNum][n].feedForward(prevLayer);
-		}
-
-
-	}
-}
