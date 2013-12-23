@@ -50,6 +50,9 @@ void Neuron::calcOutputGradients(double targetVal){
 }
 
 
+
+// Function called to update the output of a Neuron according to the outputweight of
+// the previous layer
 void Neuron::feedForwardNeuron(const Layer &prevLayer){
 	double sum=0.0;
 
