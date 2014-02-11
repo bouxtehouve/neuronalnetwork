@@ -3,13 +3,14 @@ using namespace std;
 
 
 
-Neuron::Neuron(unsigned numOutputs, unsigned myIndex, const TransfertFunction f){
+Neuron::Neuron(unsigned numOutputs, unsigned myIndex, const Transfert f){
 	for (unsigned c = 0; c<numOutputs; ++c){
 		m_outputWeights.push_back(Connection());
 		m_outputWeights.back().weight = randomWeight();
 	}
-	m_transfertFunction = f;
+	//m_transfertFunction = f;
 	m_myIndex = myIndex;
+	m_transfertFunction = f;
 }
 
 
@@ -57,12 +58,14 @@ double Neuron::sumDOW(const Layer &nextLayer){
 
 void Neuron::calcHiddenGradients(const Layer &nextLayer){
 	double dow = sumDOW(nextLayer);
-	m_gradient = dow * m_transfertFunction.value(m_outputVal);
+	TransfertFunction t;
+	m_gradient = dow * t.value(m_outputVal,m_transfertFunction);
 }
 
 void Neuron::calcOutputGradients(double targetVal){
 	double delta = targetVal - m_outputVal;
-	m_gradient = delta * m_transfertFunction.derivative(m_outputVal);
+	TransfertFunction t;
+	m_gradient = delta * t.derivative(m_outputVal, m_transfertFunction);
 
 }
 
@@ -76,8 +79,8 @@ void Neuron::feedForwardNeuron(const Layer &prevLayer){
 	for (unsigned n = 0; n < prevLayer.size(); ++n){
 		sum += prevLayer[n].getOutputVal() * prevLayer[n].m_outputWeights[m_myIndex].weight;
 	}
-
-	m_outputVal = m_transfertFunction.value(sum);
+	TransfertFunction t;
+	m_outputVal = t.value(sum, m_transfertFunction);
 }
 
 

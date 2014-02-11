@@ -67,9 +67,7 @@
     <ClInclude Include="Connection.h" />
     <ClInclude Include="Network.h" />
     <ClInclude Include="Neuron.h" />
-    <ClInclude Include="Parameters.h" />
     <ClInclude Include="TransfertFunction.h" />
-    <ClInclude Include="TransfertFunction_Tan.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />

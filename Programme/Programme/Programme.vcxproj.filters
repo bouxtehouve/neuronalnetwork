@@ -21,16 +21,10 @@
     <ClInclude Include="TransfertFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransfertFunction_Tan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Neuron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Network.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Parameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,13 +4,11 @@
 #include "TransfertFunction.h"
 
 
-
-
 class Neuron{
 	typedef std::vector<Neuron> Layer;
 public:
 
-	Neuron(unsigned numOutputs, unsigned myIndex, const TransfertFunction f);
+	Neuron(unsigned numOutputs, unsigned myIndex, Transfert f);
 	~Neuron();
 	void setOutputVal(double val){ m_outputVal = val; }
 	double getOutputVal(void) const { return m_outputVal; }
@@ -23,9 +21,10 @@ private:
 
 	static double randomWeight(void){ return rand() / double(RAND_MAX); };
 	double sumDOW(const Layer &nextLayer);
-	TransfertFunction m_transfertFunction;
 	double m_outputVal;
 	std::vector<Connection> m_outputWeights;
 	unsigned m_myIndex;
 	double m_gradient;
+
+	enum Transfert m_transfertFunction;
 };

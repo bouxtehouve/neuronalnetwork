@@ -1,13 +1,16 @@
+#pragma once
 #include "Network.h"
 #include <vector>
 #include <iostream>
 #include "TransfertFunction.h"
-#include <cassert>
+#include "Parameters.h"
 
 using namespace std;
 
-
-Network::Network(const vector<unsigned> &architecture, const TransfertFunction &transfertFunction){
+/*
+Network::Network(const vector<unsigned> &architecture, const TransfertFunction &transfertFunction,Parameters p){
+	m_parameters = Parameters(p);
+	
 	unsigned numLayers = architecture.size();
 	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
 		m_layers.push_back(Layer());
@@ -18,8 +21,23 @@ Network::Network(const vector<unsigned> &architecture, const TransfertFunction &
 		}
 	}
 }
+*/
+Network::Network( double eta, double alpha,Transfert choice){
+	m_eta = eta;
+	m_alpha = alpha;
+	std::vector<unsigned> architecture = {2, 2, 1 };
+	m_transfertFunction = choice;
 
-
+	unsigned numLayers = architecture.size();
+	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
+		m_layers.push_back(Layer());
+		unsigned numOutputs = layerNum == architecture.size() - 1 ? 0 : architecture[layerNum + 1];
+		for (unsigned neuronNum = 0; neuronNum <= architecture[layerNum]; ++neuronNum){
+			m_layers.back().push_back(Neuron(numOutputs, neuronNum, m_transfertFunction));
+			cout << "Made a Neuron!" << endl;
+		}
+	}
+}
 
 
 
@@ -60,7 +78,6 @@ void Network::getResultsNetwork(vector<double> &resultVals){
 //This function updates the output values for each neuron in each layer according 
 //to a set of input values
 void Network::feedForwardNetwork(const vector<double> &inputVals){
-	assert(inputVals.size() == m_layers[0].size() - 1);
 
 	//Assign the input values into the input neurons
 	for (unsigned i = 0; i<inputVals.size(); ++i){
@@ -117,7 +134,7 @@ void Network::backPropNetwork(const vector<double> &targetVals){
 		Layer &layer = m_layers[layerNum];
 		Layer &prevLayer = m_layers[layerNum - 1];
 		for (unsigned n = 0; n < layer.size(); ++n){
-			layer[n].updateInputWeights(prevLayer, m_parameters.m_eta, m_parameters.m_alpha);
+			layer[n].updateInputWeights(prevLayer, m_eta, m_alpha);
 		}
 	}
 
