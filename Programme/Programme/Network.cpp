@@ -23,7 +23,7 @@ Network::Network(const vector<unsigned> &architecture, const TransfertFunction &
 
 
 
-void Network::training(const std::vector<std::vector<double>> &inputValsTab, const std::vector<std::vector<double>> &outputValsTab){
+void Network::training(const std::vector<std::vector<double> > &inputValsTab, const std::vector<std::vector<double> > &outputValsTab){
 
 	for (int i = 0; i < inputValsTab.size(); i++){
 		Network::singleTraining(inputValsTab[i], outputValsTab[i]);
