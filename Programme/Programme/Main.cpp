@@ -4,9 +4,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include "TransfertFunction_Tan.h"
-#include "Parameters.h"
-
 using namespace std;
 
 
@@ -18,15 +15,15 @@ int main(){
 	//TransfertFunction_Tan t;
 	//Network mynet(0.5,0.5,TAN);
 
-//	vector<double> inputvals = {1,1};
+	//	vector<double> inputvals = {1,1};
 	//vector<double> targetvals = { 0 };
 
 
 
 	//vector<double> resultvals;
-//	mynet.getResultsNetwork(resultvals);
+	//	mynet.getResultsNetwork(resultvals);
 
 	cout << "Hello World!";
 	int n;
-	cin>>n;
+	cin >> n;
 }

@@ -10,7 +10,7 @@ enum Transfert{
 class TransfertFunction{
 
 public:
-	double value(double x,Transfert t){ 
+	double value(double x, Transfert t){
 		if (t = TAN){
 			return valueTan(x);
 		}

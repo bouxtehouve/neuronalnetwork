@@ -59,7 +59,7 @@ double Neuron::sumDOW(const Layer &nextLayer){
 void Neuron::calcHiddenGradients(const Layer &nextLayer){
 	double dow = sumDOW(nextLayer);
 	TransfertFunction t;
-	m_gradient = dow * t.value(m_outputVal,m_transfertFunction);
+	m_gradient = dow * t.value(m_outputVal, m_transfertFunction);
 }
 
 void Neuron::calcOutputGradients(double targetVal){

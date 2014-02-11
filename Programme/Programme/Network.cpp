@@ -3,29 +3,28 @@
 #include <vector>
 #include <iostream>
 #include "TransfertFunction.h"
-#include "Parameters.h"
 
 using namespace std;
 
 /*
 Network::Network(const vector<unsigned> &architecture, const TransfertFunction &transfertFunction,Parameters p){
-	m_parameters = Parameters(p);
-	
-	unsigned numLayers = architecture.size();
-	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
-		m_layers.push_back(Layer());
-		unsigned numOutputs = layerNum == architecture.size() - 1 ? 0 : architecture[layerNum + 1];
-		for (unsigned neuronNum = 0; neuronNum <= architecture[layerNum]; ++neuronNum){
-			m_layers.back().push_back(Neuron(numOutputs, neuronNum, transfertFunction));
-			cout << "Made a Neuron!" << endl;
-		}
-	}
+m_parameters = Parameters(p);
+
+unsigned numLayers = architecture.size();
+for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
+m_layers.push_back(Layer());
+unsigned numOutputs = layerNum == architecture.size() - 1 ? 0 : architecture[layerNum + 1];
+for (unsigned neuronNum = 0; neuronNum <= architecture[layerNum]; ++neuronNum){
+m_layers.back().push_back(Neuron(numOutputs, neuronNum, transfertFunction));
+cout << "Made a Neuron!" << endl;
+}
+}
 }
 */
-Network::Network( double eta, double alpha,Transfert choice){
+Network::Network(double eta, double alpha, Transfert choice){
 	m_eta = eta;
 	m_alpha = alpha;
-	std::vector<unsigned> architecture = {2, 2, 1 };
+	std::vector<unsigned> architecture = { 2, 2, 1 };
 	m_transfertFunction = choice;
 
 	unsigned numLayers = architecture.size();
