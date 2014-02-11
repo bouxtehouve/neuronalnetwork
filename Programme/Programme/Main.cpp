@@ -11,9 +11,9 @@ using namespace std;
 
 int main(){
 
-	TransfertFunction_Tan *t;
+	//TransfertFunction_Tan *t;
 
-	cout<<	t->value(10);
+	//cout<<	t->value(10);
 
 	//vector<unsigned> topology;
 	//topology.push_back(3);
@@ -31,6 +31,7 @@ int main(){
 	//vector<double> resultvals;
 	//mynet.getresults(resultvals);
 
+	cout << "Hello World!";
 	int n;
 	cin>>n;
 }

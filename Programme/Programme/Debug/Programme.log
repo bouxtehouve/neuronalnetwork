@@ -1,31 +1,15 @@
-﻿Build started 23/12/2013 11:59:37.
-     1>Project "C:\Users\Martin\Documents\GitHub\neuronalnetwork\Programme\Programme\Programme.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/02/2014 21:08:07.
+     1>Project "C:\Users\Martin\Documents\Programme\Programme\Programme.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Programmes\Microsoft Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp Network.cpp Neuron.cpp
-         Neuron.cpp
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C2146: syntax error : missing ';' before identifier 'm_transfertFunction'
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(56): error C2039: 'transfertFunctionDerivative' : is not a member of 'Neuron'
-                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(9) : see declaration of 'Neuron'
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(56): error C3861: 'transfertFunctionDerivative': identifier not found
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(61): error C2039: 'transfertFunctionDerivative' : is not a member of 'Neuron'
-                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(9) : see declaration of 'Neuron'
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(61): error C3861: 'transfertFunctionDerivative': identifier not found
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(73): error C2039: 'transfertFunction' : is not a member of 'Neuron'
-                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(9) : see declaration of 'Neuron'
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.cpp(73): error C3861: 'transfertFunction': identifier not found
-         Network.cpp
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C2146: syntax error : missing ';' before identifier 'm_transfertFunction'
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(74): error C2601: 'Network::feedForward' : local function definitions are illegal
-                 c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(27): this line contains a '{' which has not yet been matched
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(92): fatal error C1075: end of file found before the left brace '{' at 'c:\users\martin\documents\github\neuronalnetwork\programme\programme\network.cpp(27)' was matched
+         D:\Programmes\Visual Studio 13\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C2146: syntax error : missing ';' before identifier 'm_transfertFunction'
-     1>c:\users\martin\documents\github\neuronalnetwork\programme\programme\neuron.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-         Generating Code...
-     1>Done Building Project "C:\Users\Martin\Documents\GitHub\neuronalnetwork\Programme\Programme\Programme.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         D:\Programmes\Visual Studio 13\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Martin\Documents\Programme\Debug\Programme.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Martin\Documents\Programme\Debug\Programme.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Martin\Documents\Programme\Debug\Programme.lib" /MACHINE:X86 Debug\Main.obj
+         Debug\Network.obj
+         Debug\Neuron.obj
+         Programme.vcxproj -> C:\Users\Martin\Documents\Programme\Debug\Programme.exe
+     1>Done Building Project "C:\Users\Martin\Documents\Programme\Programme\Programme.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.99
+Time Elapsed 00:00:00.47

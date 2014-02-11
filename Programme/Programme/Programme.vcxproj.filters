@@ -7,7 +7,7 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
@@ -15,32 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Neuron.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Network.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TrainingMethod_Gradient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Neuron.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Network.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Training.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TrainingMethod.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Connection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -50,8 +24,25 @@
     <ClInclude Include="TransfertFunction_Tan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TrainingMethod_Gradient.h">
+    <ClInclude Include="Neuron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Neuron.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
