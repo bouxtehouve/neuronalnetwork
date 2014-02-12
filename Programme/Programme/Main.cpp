@@ -1,37 +1,29 @@
+#pragma once
 #include "Network.h"
 #include <vector>
 #include <iostream>
 #include <cstdlib>
-#include <cassert>
 #include <cmath>
-#include "TransfertFunction_Tan.h"
-
 using namespace std;
+
 
 
 int main(){
 
-	//TransfertFunction_Tan *t;
 
-	//cout<<	t->value(10);
+	//std::vector<unsigned> architecture = { 2, 2, 1 };
+	//TransfertFunction_Tan t;
+	//Network mynet(0.5,0.5,TAN);
 
-	//vector<unsigned> topology;
-	//topology.push_back(3);
-	//topology.push_back(2);
-	//topology.push_back(1);
+	//	vector<double> inputvals = {1,1};
+	//vector<double> targetvals = { 0 };
 
-	//network mynet(topology);
 
-	//vector<double> inputvals;
-	//mynet.feedforward(inputvals);
-
-	//vector<double> targetvals;
-	//mynet.backprop(targetvals);
 
 	//vector<double> resultvals;
-	//mynet.getresults(resultvals);
+	//	mynet.getResultsNetwork(resultvals);
 
 	cout << "Hello World!";
 	int n;
-	cin>>n;
+	cin >> n;
 }
