@@ -2,7 +2,7 @@
 #include <vector>
 #include "Connection.h"
 #include "TransfertFunction.h"
-
+#include <cstdlib>
 
 class Neuron{
 	typedef std::vector<Neuron> Layer;

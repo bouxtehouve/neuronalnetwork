@@ -24,7 +24,10 @@ cout << "Made a Neuron!" << endl;
 Network::Network(double eta, double alpha, Transfert choice){
 	m_eta = eta;
 	m_alpha = alpha;
-	std::vector<unsigned> architecture = { 2, 2, 1 };
+	std::vector<unsigned> architecture;
+	architecture.push_back(2);
+	architecture.push_back(2);
+	architecture.push_back(1);
 	m_transfertFunction = choice;
 
 	unsigned numLayers = architecture.size();

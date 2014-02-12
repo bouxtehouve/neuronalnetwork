@@ -26,4 +26,6 @@ int main(){
 	cout << "Hello World!";
 	int n;
 	cin >> n;
+
+	Return 0;
 }
