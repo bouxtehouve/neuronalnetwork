@@ -27,5 +27,5 @@ int main(){
 	int n;
 	cin >> n;
 
-	Return 0;
+	return(0);
 }
