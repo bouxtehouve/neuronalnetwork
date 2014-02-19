@@ -1,7 +1,11 @@
 #pragma once
 #include "Network.h"
+#include "extract_data.h"
+#include "EasyBMP.h"
 #include <vector>
+#include <string>
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <cmath>
 using namespace std;
