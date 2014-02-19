@@ -9,12 +9,21 @@ using namespace std;
 
 class data
 {	
-	string path;
+	string path;	// direction path with double '\\'
 
 public:
 	data(string);
-	vector <vector<double>> images_data(string aim);
+	vector <vector<double>> images_data(string aim);	// aim = 'test' or 'train'
+	/* vector of vector of double for images: 
+	rank 1) list of pictures (10000 for 'test', 60000 for 'train')
+	rank 2) list of pixels (28*28=784 doubles)
+	rank 3) each double (0 to 255)
+	*/
 	vector<double> labels_data(string aim);
+	/* vector of double for labels: 
+	rank 1) list of labels (10000 for 'test', 60000 for 'train')
+	rank 2) each digits (0 to 9)
+	*/
 };
 
 #endif

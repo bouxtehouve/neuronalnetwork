@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 data::data(string path0)
@@ -13,19 +14,24 @@ vector <vector<double>> data::images_data(string aim)
 {
 	string file_name;
 	vector <vector<double>> v_images;
+	double n_rows;
 
+	// determine the name of the file depending on the aim and its number of rows
 	if (aim=="test"){
 		file_name="test_images.txt";
+		n_rows=10000;
 		if (aim=="train"){
 			file_name="train_images.txt";
+			n_rows=60000;
 		}
 
 		ifstream data_images(path+file_name);
 		if (data_images) {
-			double value;
-			while ( data_images >> value ) {
+			for (unsigned i=1; i<n_rows+1; i++){	// for every digits, creation of a sub-vector to have pixels
 				vector<double> v_pixel;
-				for (unsigned i=0; i<784; i++){
+				for (unsigned j=1; j<785; j++){		// extraction the values from the data
+					double value;
+					data_images >> value;
 					v_pixel.push_back(value);
 				}
 				v_images.push_back(v_pixel);
@@ -35,7 +41,8 @@ vector <vector<double>> data::images_data(string aim)
 	}
 
 	else{
-		cout << "File can't be opened: aim must be 'train' or 'test'" << endl;
+		cerr << "File can't be opened: aim must be 'train' or 'test'" << endl;
+		// no return: to get the error easily
 	}
 }
 
@@ -44,6 +51,7 @@ vector<double> data::labels_data(string aim)
 	string file_name;
 	vector<double> v_labels;
 
+	// determine the name of the file depending on the aim
 	if (aim=="test"){
 		file_name="test_labels.txt";
 		if (aim=="train"){
@@ -53,7 +61,7 @@ vector<double> data::labels_data(string aim)
 		ifstream data_labels(path+file_name);
 		if (data_labels) {
 			double value;
-			while ( data_labels >> value ) {
+			while ( data_labels >> value ){		// put all values in v_labels
 				v_labels.push_back(value);
 			}
 		}
@@ -61,6 +69,7 @@ vector<double> data::labels_data(string aim)
 	}
 	
 	else{
-		cout << "File can't be opened: aim must be 'train' or 'test'" << endl;
+		cerr << "File can't be opened: aim must be 'train' or 'test'" << endl;
+		// no return: to get the error easily
 	}
 }
