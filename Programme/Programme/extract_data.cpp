@@ -1,4 +1,5 @@
 #include "extract_data.h"
+#include "EasyBMP.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -72,4 +73,30 @@ vector<double> data::labels_data(string aim)
 		cerr << "File can't be opened: aim must be 'train' or 'test'" << endl;
 		// no return: to get the error easily
 	}
+}
+
+double data::output_bmp(int l)
+{
+	vector <vector <double>> v;
+	v=images_data("test");		// no need to build images while training the network
+	vector <double> w;
+	w=v.at(l);
+
+	BMP AnImage;	// create a bitmap file
+	AnImage.SetSize(28,28);		// setting size (28*28 pixels)
+	AnImage.SetBitDepth(32);	// coding on 32 bits
+	// RGB method, argument=value get from images_data
+	for (int i=1;i<28;i++){
+		for (int j=1; j<28; j++){
+			AnImage(i,j)->Red = w[28*j+i];
+			AnImage(i,j)->Green = w[28*j+i];
+			AnImage(i,j)->Blue = w[28*j+i];
+			AnImage(i,j)->Alpha = 0;
+		}
+	}
+
+	AnImage.WriteToFile("Output.bmp");		// name of output file
+	vector <double> y;
+	y=labels_data("test");
+	return y.at(l);
 }
