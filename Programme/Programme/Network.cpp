@@ -76,6 +76,21 @@ void Network::getResultsNetwork(vector<double> &resultVals){
 	}
 }
 
+int Network::interpretResults(std::vector<double> &resultVals)
+{
+	int pos = 0;
+	int max = resultVals[0];
+	for (unsigned n =0; n < resultVals.size(); ++n)
+	{
+		if (resultVals[n] > max)
+		{
+			pos = n;
+			max = resultVals[n];
+		}
+	}
+	return pos;
+}
+
 
 //This function updates the output values for each neuron in each layer according
 //to a set of input values

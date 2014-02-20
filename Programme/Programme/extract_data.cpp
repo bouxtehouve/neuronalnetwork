@@ -11,10 +11,10 @@ data::data(string path0)
 	path=path0;
 }
 
-vector <vector<double>> data::images_data(string aim)
+vector <vector<double> > data::images_data(string aim)
 {
 	string file_name;
-	vector <vector<double>> v_images;
+	vector <vector<double> > v_images;
 	double n_rows;
 
 	// determine the name of the file depending on the aim and its number of rows
@@ -77,7 +77,7 @@ vector<double> data::labels_data(string aim)
 
 double data::output_bmp(int l)
 {
-	vector <vector <double>> v;
+	vector <vector <double> > v;
 	v=images_data("test");		// no need to build images while training the network
 	vector <double> w;
 	w=v.at(l);

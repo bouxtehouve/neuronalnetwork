@@ -13,7 +13,7 @@ class data
 
 public:
 	data(string);
-	vector <vector<double>> images_data(string aim);	// aim = 'test' or 'train'
+	vector <vector<double> > images_data(string aim);	// aim = 'test' or 'train'
 	/* vector of vector of double for images: 
 	rank 1) list of pictures (10000 for 'test', 60000 for 'train')
 	rank 2) list of pixels (28*28=784 doubles)
