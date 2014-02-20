@@ -1,14 +1,19 @@
 #include "extract_data.h"
 #include "EasyBMP.h"
+#include <time.h>
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
 using namespace std;
 
-data::data(string path0)
+string data::get_path()
 {
-	path=path0;
+	string path;
+	path=__FILE__;
+	size_t ext_pos = path.find_last_of('\\');
+	path.erase(ext_pos+1, path.size()-1);
+	return path;
 }
 
 vector <vector<double> > data::images_data(string aim)
@@ -26,7 +31,7 @@ vector <vector<double> > data::images_data(string aim)
 			n_rows=60000;
 		}
 
-		ifstream data_images((path+file_name).c_str());
+		ifstream data_images((get_path()+file_name).c_str());		// data_images: data file of images
 		if (data_images) {
 			for (unsigned i=1; i<n_rows+1; i++){	// for every digits, creation of a sub-vector to have pixels
 				vector<double> v_pixel;
@@ -59,7 +64,7 @@ vector<double> data::labels_data(string aim)
 			file_name="train_labels";
 		}
 
-		ifstream data_labels((path+file_name).c_str());
+		ifstream data_labels((get_path()+file_name).c_str());		// data_labels: data file of labels
 		if (data_labels) {
 			double value;
 			while ( data_labels >> value ){		// put all values in v_labels
@@ -80,7 +85,7 @@ double data::output_bmp(int l)
 	vector <vector <double> > v;
 	v=images_data("test");		// no need to build images while training the network
 	vector <double> w;
-	w=v.at(l);
+	w=v.at(l);		// select an image in the vector of images
 
 	BMP AnImage;	// create a bitmap file
 	AnImage.SetSize(28,28);		// setting size (28*28 pixels)

@@ -8,11 +8,8 @@
 using namespace std;
 
 class data
-{	
-	string path;	// direction path with double '\\'
-
+{
 public:
-	data(string);
 	vector <vector<double> > images_data(string aim);	// aim = 'test' or 'train'
 	/* vector of vector of double for images: 
 	rank 1) list of pictures (10000 for 'test', 60000 for 'train')
@@ -20,10 +17,15 @@ public:
 	rank 3) each double (0 to 255)
 	*/
 
-	vector<double> labels_data(string aim);
+	vector <double> labels_data(string aim);
 	/* vector of double for labels: 
 	rank 1) list of labels (10000 for 'test', 60000 for 'train')
 	rank 2) each digits (0 to 9)
+	*/
+
+	int rand_digit();
+	/*
+	return a random number: used for graphic interface to show a random image
 	*/
 
 	double output_bmp(int l);
@@ -33,9 +35,9 @@ public:
 	also return label corresponding to the pixel
 	*/
 
-	int rand_digit();
+	string get_path();
 	/*
-	return a random number: used for graphic interface to show a random image
+	get the path directory of project
 	*/
 
 };
