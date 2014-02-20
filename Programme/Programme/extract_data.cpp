@@ -100,3 +100,9 @@ double data::output_bmp(int l)
 	y=labels_data("test");
 	return y.at(l);
 }
+
+int data::rand_digit()
+{
+	srand(time(NULL)); // initialization of rand
+	return static_cast<int>(rand() % 10000);
+}

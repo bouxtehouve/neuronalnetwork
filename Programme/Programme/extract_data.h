@@ -33,6 +33,11 @@ public:
 	also return label corresponding to the pixel
 	*/
 
+	int rand_digit();
+	/*
+	return a random number: used for graphic interface to show a random image
+	*/
+
 };
 
 #endif
