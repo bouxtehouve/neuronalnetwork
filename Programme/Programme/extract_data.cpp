@@ -26,7 +26,7 @@ vector <vector<double> > data::images_data(string aim)
 			n_rows=60000;
 		}
 
-		ifstream data_images(path+file_name);
+		ifstream data_images((path+file_name).c_str());
 		if (data_images) {
 			for (unsigned i=1; i<n_rows+1; i++){	// for every digits, creation of a sub-vector to have pixels
 				vector<double> v_pixel;
@@ -59,7 +59,7 @@ vector<double> data::labels_data(string aim)
 			file_name="train_labels";
 		}
 
-		ifstream data_labels(path+file_name);
+		ifstream data_labels((path+file_name).c_str());
 		if (data_labels) {
 			double value;
 			while ( data_labels >> value ){		// put all values in v_labels

@@ -21,14 +21,13 @@ cout << "Made a Neuron!" << endl;
 }
 }
 */
-Network::Network(double eta, double alpha, Transfert choice){
+Network::Network(double eta, double alpha, Transfert choice, std::vector<unsigned> &architecture){
 	m_eta = eta;
 	m_alpha = alpha;
-	std::vector<unsigned> architecture;
-	architecture.push_back(2);
-	architecture.push_back(2);
-	architecture.push_back(1);
 	m_transfertFunction = choice;
+	m_error_testing = 0;
+	m_count = 0;
+	m_count_error = 0;
 
 	unsigned numLayers = architecture.size();
 	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
@@ -76,8 +75,7 @@ void Network::getResultsNetwork(vector<double> &resultVals){
 	}
 }
 
-int Network::interpretResults(std::vector<double> &resultVals)
-{
+int Network::interpretResults(std::vector<double> &resultVals){
 	int pos = 0;
 	int max = resultVals[0];
 	for (unsigned n =0; n < resultVals.size(); ++n)
@@ -110,6 +108,17 @@ void Network::feedForwardNetwork(const vector<double> &inputVals){
 	}
 }
 
+void Network::singleTesting(const std::vector<double> &inputVals, int &wanted_digit){
+	m_count += 1;
+	Network::feedForwardNetwork(inputVals);
+	std::vector<double> resultVals;
+	Network::getResultsNetwork(resultVals);
+	int result = Network::interpretResults(resultVals);
+	if (result != wanted_digit){
+		m_count_error += 1;
+		m_error_testing = m_count_error / m_count;
+	}
+}
 
 //This function does the backPropagation of the neural network
 void Network::backPropNetwork(const vector<double> &targetVals){
