@@ -47,6 +47,9 @@ vector <vector<double> > gestion_data::images_data(string aim)
 			v_images.push_back(v_pixel);
 		}
 	}
+	if (aim == "test"){
+		m_images = v_images;
+	}
 	return v_images;
 }
 
@@ -73,6 +76,9 @@ vector<double> gestion_data::labels_data(string aim)
 		while ( data_labels >> value ){		// put all values in v_labels
 			v_labels.push_back(value);
 		}
+	}
+	if (aim == "test"){
+		m_labels = v_labels;
 	}
 	return v_labels;
 }
