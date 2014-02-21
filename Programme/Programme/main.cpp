@@ -5,6 +5,7 @@
 #include "extract_data.h"
 #include "Network.h"
 #include "EasyBMP.h" // external library
+#include "extract_data.h"
 using namespace std;
 
 int main(){
@@ -15,6 +16,10 @@ int main(){
 	double eta = 0.2;
 	double alpha = 0.5;
 	Network rdn(eta, alpha, TAN, archi);
+	gestion_data dta;
+	vector<vector<double> > tst = dta.images_data("train");
+	double x = dta.output_bmp(0);
+	cout<<"YES"<<x<<endl;
 	rdn.data_training();
 	//cout << "cc7" << endl;
 	//vector<double> input(2);

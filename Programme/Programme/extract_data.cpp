@@ -23,33 +23,31 @@ vector <vector<double> > gestion_data::images_data(string aim)
 	double n_rows;
 
 	// determine the name of the file depending on the aim and its number of rows
-	if (aim=="test"){
+	if (aim == "test"){
 		file_name="test_images.txt";
 		n_rows=10000;
-		if (aim=="train"){
-			file_name="train_images.txt";
-			n_rows=60000;
-		}
-
-		ifstream data_images((get_path()+file_name).c_str());		// data_images: data file of images
-		if (data_images) {
-			for (unsigned i=1; i<n_rows+1; i++){	// for every digits, creation of a sub-vector to have pixels
-				vector<double> v_pixel;
-				for (unsigned j=1; j<785; j++){		// extraction the values from the data
-					double value;
-					data_images >> value;
-					v_pixel.push_back(value);
-				}
-				v_images.push_back(v_pixel);
-			}
-		}
-		return v_images;
 	}
-
-	else{
+	else if (aim == "train"){
+		file_name="train_images.txt";
+		n_rows=60000;
+	}
+	else {
 		cerr << "File can't be opened: aim must be 'train' or 'test'" << endl;
 		// no return: to get the error easily
 	}
+	ifstream data_images((get_path()+file_name).c_str());		// data_images: data file of images
+	if (data_images) {
+		for (unsigned i=1; i<n_rows+1; i++){	// for every digits, creation of a sub-vector to have pixels
+			vector<double> v_pixel;
+			for (unsigned j=1; j<785; j++){		// extraction the values from the data
+				double value;
+				data_images >> value;
+				v_pixel.push_back(value);
+			}
+			v_images.push_back(v_pixel);
+		}
+	}
+	return v_images;
 }
 
 vector<double> gestion_data::labels_data(string aim)
@@ -58,26 +56,24 @@ vector<double> gestion_data::labels_data(string aim)
 	vector<double> v_labels;
 
 	// determine the name of the file depending on the aim
-	if (aim=="test"){
+	if (aim == "test"){
 		file_name="test_labels.txt";
-		if (aim=="train"){
-			file_name="train_labels";
-		}
-
-		ifstream data_labels((get_path()+file_name).c_str());		// data_labels: data file of labels
-		if (data_labels) {
-			double value;
-			while ( data_labels >> value ){		// put all values in v_labels
-				v_labels.push_back(value);
-			}
-		}
-		return v_labels;
 	}
-	
-	else{
+	else if (aim == "train"){
+		file_name="train_labels.txt";
+	}
+	else {
 		cerr << "File can't be opened: aim must be 'train' or 'test'" << endl;
 		// no return: to get the error easily
 	}
+	ifstream data_labels((get_path()+file_name).c_str());		// data_labels: data file of labels
+	if (data_labels) {
+		double value;
+		while ( data_labels >> value ){		// put all values in v_labels
+			v_labels.push_back(value);
+		}
+	}
+	return v_labels;
 }
 
 
