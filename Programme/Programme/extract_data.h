@@ -47,6 +47,9 @@ public:
 	*/
 
 	vector <double> singleoutput_data(double &label);
+
+	vector<vector<double> > m_images;
+	vector<double> m_labels;
 };
 
 #endif

@@ -47,6 +47,9 @@ vector <vector<double> > gestion_data::images_data(string aim)
 			v_images.push_back(v_pixel);
 		}
 	}
+	if (aim == "test"){
+			m_images = v_images;
+		}
 	return v_images;
 }
 
@@ -73,6 +76,9 @@ vector<double> gestion_data::labels_data(string aim)
 			v_labels.push_back(value);
 		}
 	}
+	if (aim == "test"){
+				m_labels = v_labels;
+			}
 	return v_labels;
 }
 
@@ -81,7 +87,8 @@ vector<double> gestion_data::labels_data(string aim)
 double gestion_data::output_bmp(int l)
 {
 	vector <vector <double> > v;
-	v=images_data("test");		// no need to build images while training the network
+	if (m_images.size() == 0) {v=images_data("test");}
+	else {v = m_images;}// no need to build images while training the network
 	vector <double> w;
 	w=v.at(l);		// select an image in the vector of images
 
@@ -100,7 +107,8 @@ double gestion_data::output_bmp(int l)
 
 	AnImage.WriteToFile("Output.bmp");		// name of output file
 	vector <double> y;
-	y=labels_data("test");
+	if (m_labels.size() == 0) {y=labels_data("test");}
+	else {y = m_labels;}
 	return y.at(l);
 }
 
