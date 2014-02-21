@@ -100,6 +100,47 @@ void Network::singleTesting(const std::vector<double> &inputVals, int &wanted_di
 	}
 }
 
+void Network::consoleTesting()
+{
+	m_count = 0;
+	gestion_data data;
+	vector <vector<double> > images = data.images_data("test");
+	vector<vector<double> > output_values = data.output_data("test");
+	while (m_count < 10000)
+	{
+		m_count +=1;
+		cout<<"Press 1 to test the network or 0 to quit !"<<endl;
+		int n;
+		cin >> n;
+		if(n == 1)
+		{
+			// We pick up the next written digit and corresponding label
+			Network::feedForwardNetwork(images[m_count]);
+			std::vector<double> resultVals;
+			Network::getResultsNetwork(resultVals);
+			int result = Network::interpretResults(resultVals);
+			double x = data.output_bmp(m_count);
+			cout<<"Digit the networks sees : "<<result<<endl;
+			cout<<"Actual digit : "<<Network::interpretResults(output_values[m_count])<<endl;
+			if (result != Network::interpretResults(output_values[m_count]))
+			{
+				m_count_error +=1;
+				m_error_testing = m_count_error / m_count;
+			}
+			cout<<"The updated error rate for the network is"<<m_error_testing<<endl;
+		}
+		else if (n == 2)
+		{
+			return;
+		}
+		else
+		{
+			cout<<"You have to write 0 or 1 !"<<endl;
+		}
+	}
+	return;
+}
+
 //This function does the backPropagation of the neural network
 void Network::backPropNetwork(const vector<double> &targetVals){
 	// Calculate overall net error 'RMS of the output neuron errors)

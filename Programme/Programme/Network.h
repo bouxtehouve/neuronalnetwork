@@ -28,6 +28,7 @@ public:
 	// (pour la gui) une fois le réseau entraîné, regarde pour un input donné si on reconnaît bien et modifie le taux d'erreur en attribut
 	void data_training(void);
 	// will train our network given the data we have
+	void consoleTesting();
 
 	std::vector <Layer> m_layers;
 	double m_error;
