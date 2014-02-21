@@ -116,6 +116,15 @@ vector<vector<double> > gestion_data::output_data(string aim){
 	return output_data;
 }
 
+vector<double> gestion_data::singleoutput_data(double &label){
+	vector<double> output_data;
+	for (unsigned k =0; k<10; ++k){
+		if (k == label) output_data.push_back(1);
+						else output_data.push_back(0);
+	}
+	return output_data;
+}
+
 int gestion_data::rand_digit()
 {
 	srand(time(NULL)); // initialization of rand

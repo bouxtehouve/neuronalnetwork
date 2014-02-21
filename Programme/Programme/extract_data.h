@@ -46,6 +46,7 @@ public:
 	get the path directory of project
 	*/
 
+	vector <double> singleoutput_data(double &label);
 };
 
 #endif
