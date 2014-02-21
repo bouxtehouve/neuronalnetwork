@@ -7,22 +7,11 @@
 #include "EasyBMP.h" // external library using namespace std; using namespace std;
 
 int main(){
-	gestion_data data0;
-	cout << data0.get_path() << endl;
-	cout << __FILE__ << endl;
-	string path;
-	path = __FILE__;
-	size_t std = path.find_last_of('\\');
-	printf("%zu",std);
-	cout<<"PINGAS"<<endl;
-	cout << path.size() << endl;
-	//vector<unsigned> archi;
-	//archi.push_back(784);
-	//archi.push_back(30000);
-	//archi.push_back(10);
-	//double eta = 0.2;
-	//double alpha = 0.5;
-	//Network rdn(eta, alpha, TAN, archi);
+
+	double eta = 0.2;
+	double alpha = 0.5;
+	Network rdn(eta, alpha, TAN);
+	cout<<"good"<<endl;
 	//gestion_data dta;
 	//vector<vector<double> > tst = dta.images_data("train");
 	//double x = dta.output_bmp(0);

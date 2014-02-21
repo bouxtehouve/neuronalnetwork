@@ -6,7 +6,7 @@ class Network{
 	typedef std::vector<Neuron> Layer;
 public:
 	//Network(const std::vector<unsigned> &architecture, const TransfertFunction &transfertFunction,Parameters p);
-	Network(double eta, double alpha, Transfert choice, std::vector<unsigned> &architecture); //Constructeur
+	Network(double eta, double alpha, Transfert choice); //Constructeur
 	void feedForwardNetwork(const std::vector<double> &inputVals);
 	//Pour une valeur d'input donnee, fait progresser l'information jusqu'a la derniere couche
 	void backPropNetwork(const std::vector<double> &targetVals);

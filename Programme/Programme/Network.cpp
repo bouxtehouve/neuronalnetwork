@@ -21,7 +21,7 @@ m_layers.back().push_back(Neuron(numOutputs, neuronNum, transfertFunction));
 }
 }
 */
-Network::Network(double eta, double alpha, Transfert choice, std::vector<unsigned> &architecture){
+Network::Network(double eta, double alpha, Transfert choice){
 	m_eta = eta;
 	m_alpha = alpha;
 	m_transfertFunction = choice;
@@ -29,6 +29,11 @@ Network::Network(double eta, double alpha, Transfert choice, std::vector<unsigne
 	m_count = 0;
 	m_count_error = 0;
 	
+	vector<unsigned> architecture;
+	architecture.push_back(784);
+	architecture.push_back(500);
+	architecture.push_back(10);
+
 	unsigned numLayers = architecture.size();
 	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
 		m_layers.push_back(Layer());
