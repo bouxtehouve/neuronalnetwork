@@ -12,7 +12,7 @@ Network::Network(double eta, double alpha, Transfert choice){
 	
 	vector<unsigned> architecture;
 	architecture.push_back(784);		// 784=number of pixels
-	architecture.push_back(500);
+    architecture.push_back(15);
 	architecture.push_back(10);			// 10=number of digits (10)
 
 	unsigned numLayers = architecture.size();
@@ -27,9 +27,10 @@ Network::Network(double eta, double alpha, Transfert choice){
 
 
 void Network::training(const std::vector<std::vector<double> > &inputValsTab, const std::vector<std::vector<double> > &outputValsTab){
-
+    cout<<"Size of input is "<<inputValsTab.size()-1<<endl;
 	for (int i = 0; i < inputValsTab.size()-1; i++){
 		Network::singleTraining(inputValsTab[i], outputValsTab[i]);
+        cout<<"Training done for i = "<<i<<endl;
 	}
 
 }
@@ -44,7 +45,7 @@ void Network::singleTraining(const std::vector<double> &inputVals, const std::ve
 	// Train the net what the outputs should have been:
 	Network::backPropNetwork(outputVals);
 	// Report how well the training is working, average over recent samples:
-	std::cout << m_recentAverageError << "\n" << endl;
+    //std::cout << m_recentAverageError << "\n" << endl;
 }
 
 //This function sends the output value obtained by the neuron network with the last inputs entered
@@ -102,43 +103,43 @@ void Network::singleTesting(const std::vector<double> &inputVals, int &wanted_di
 
 void Network::consoleTesting()
 {
-	m_count = 0;
-	gestion_data data;
-	vector <vector<double> > images = data.images_data("test");
-	vector<vector<double> > output_values = data.output_data("test");
-	while (m_count < 10000)
-	{
-		m_count +=1;
-		cout<<"Press 1 to test the network or 0 to quit !"<<endl;
-		int n;
-		cin >> n;
-		if(n == 1)
-		{
-			// We pick up the next written digit and corresponding label
-			Network::feedForwardNetwork(images[m_count]);
-			std::vector<double> resultVals;
-			Network::getResultsNetwork(resultVals);
-			int result = Network::interpretResults(resultVals);
-			double x = data.output_bmp(m_count);
-			cout<<"Digit the networks sees : "<<result<<endl;
-			cout<<"Actual digit : "<<Network::interpretResults(output_values[m_count])<<endl;
-			if (result != Network::interpretResults(output_values[m_count]))
-			{
-				m_count_error +=1;
-				m_error_testing = m_count_error / m_count;
-			}
-			cout<<"The updated error rate for the network is"<<m_error_testing<<endl;
-		}
-		else if (n == 2)
-		{
-			return;
-		}
-		else
-		{
-			cout<<"You have to write 0 or 1 !"<<endl;
-		}
-	}
-	return;
+    m_count = 0;
+    gestion_data data;
+    vector <vector<double> > images = data.images_data("test");
+    vector<vector<double> > output_values = data.output_data("test");
+    while (m_count < 10000)
+    {
+        m_count +=1;
+        cout<<"Press 1 to test the network or 0 to quit !"<<endl;
+        int n;
+        cin >> n;
+        if(n == 1)
+        {
+            // We pick up the next written digit and corresponding label
+            Network::feedForwardNetwork(images[m_count]);
+            std::vector<double> resultVals;
+            Network::getResultsNetwork(resultVals);
+            int result = Network::interpretResults(resultVals);
+            double x = data.output_bmp(m_count);
+            cout<<"Digit the networks sees : "<<result<<endl;
+            cout<<"Actual digit : "<<Network::interpretResults(output_values[m_count])<<endl;
+            if (result != Network::interpretResults(output_values[m_count]))
+            {
+                m_count_error +=1;
+                m_error_testing = m_count_error / m_count;
+            }
+            cout<<"The updated error rate for the network is"<<m_error_testing<<endl;
+        }
+        else if (n == 2)
+        {
+            return;
+        }
+        else
+        {
+            cout<<"You have to write 0 or 1 !"<<endl;
+        }
+    }
+    return;
 }
 
 //This function does the backPropagation of the neural network
@@ -189,5 +190,7 @@ void Network::data_training(void){
 	gestion_data data;
 	vector <vector<double> > images = data.images_data("train");
 	vector<vector<double> > output_values = data.output_data("train");
+    cout<<"Beginning training of the network..."<<endl;
 	Network::training(images, output_values);
+    cout<<"Training Done."<<endl;
 }
