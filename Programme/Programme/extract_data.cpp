@@ -47,9 +47,6 @@ vector <vector<double> > gestion_data::images_data(string aim)
 			v_images.push_back(v_pixel);
 		}
 	}
-	if (aim == "test"){
-			m_images = v_images;
-		}
 	return v_images;
 }
 
@@ -65,10 +62,11 @@ vector<double> gestion_data::labels_data(string aim)
 	else if (aim == "train"){
 		file_name="train_labels.txt";
 	}
-	else {
+	else{
 		cerr << "File can't be opened: aim must be 'train' or 'test'" << endl;
 		// no return: to get the error easily
 	}
+
 	ifstream data_labels((get_path()+file_name).c_str());		// data_labels: data file of labels
 	if (data_labels) {
 		double value;
@@ -76,19 +74,13 @@ vector<double> gestion_data::labels_data(string aim)
 			v_labels.push_back(value);
 		}
 	}
-	if (aim == "test"){
-				m_labels = v_labels;
-			}
 	return v_labels;
 }
-
-
 
 double gestion_data::output_bmp(int l)
 {
 	vector <vector <double> > v;
-	if (m_images.size() == 0) {v=images_data("test");}
-	else {v = m_images;}// no need to build images while training the network
+	v=images_data("test");		// no need to build images while training the network
 	vector <double> w;
 	w=v.at(l);		// select an image in the vector of images
 
@@ -107,20 +99,26 @@ double gestion_data::output_bmp(int l)
 
 	AnImage.WriteToFile("Output.bmp");		// name of output file
 	vector <double> y;
-	if (m_labels.size() == 0) {y=labels_data("test");}
-	else {y = m_labels;}
+	y=labels_data("test");
 	return y.at(l);
 }
 
 vector<vector<double> > gestion_data::output_data(string aim){
 	vector<double> labels = labels_data(aim);
 	vector<vector<double> > output_data;
+	vector<double> temp;
 	for (int i = 0; i<labels.size(); ++i){
+		temp.clear();
 		for (unsigned k = 0; k<10; ++k){
-			if (k == labels[i]) output_data[i].push_back(1);
-				else output_data[i].push_back(0);
+			if (k == labels[i]){
+				temp.push_back(1);
+			}
+			else{
+				temp.push_back(0);
 			}
 		}
+		output_data.push_back(temp);
+	}
 	return output_data;
 }
 
@@ -136,5 +134,5 @@ vector<double> gestion_data::singleoutput_data(double &label){
 int gestion_data::rand_digit()
 {
 	srand(time(NULL)); // initialization of rand
-	return static_cast<int>(rand() % 10000);
+	return static_cast<int>(rand() % 10000);	// 10000 mandatory because this method is used only after the training, i.e. for the test
 }

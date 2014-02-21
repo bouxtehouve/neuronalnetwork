@@ -12,15 +12,15 @@ class gestion_data
 public:
 	vector <vector<double> > images_data(string aim);	// aim = 'test' or 'train'
 	/* vector of vector of double for images: 
-	rank 1) list of pictures (10000 for 'test', 60000 for 'train')
-	rank 2) list of pixels (28*28=784 doubles)
-	rank 3) each double (0 to 255)
+	1) vector of vector of double: list of pictures (10000 for 'test', 60000 for 'train')
+	2) vector of double (sub-vector of 1)): list of pixels (28*28=784 doubles)
+	3) double (values of vector 2)): each double (0 to 255)
 	*/
 
 	vector <double> labels_data(string aim);
 	/* vector of double for labels: 
-	rank 1) list of labels (10000 for 'test', 60000 for 'train')
-	rank 2) each digits (0 to 9)
+	1) vector od double: list of labels (10000 for 'test', 60000 for 'train')
+	2) double (values of vecteur 1)): each digits (0 to 9)
 	*/
 
 	int rand_digit();
@@ -48,8 +48,6 @@ public:
 
 	vector <double> singleoutput_data(double &label);
 
-	vector<vector<double> > m_images;
-	vector<double> m_labels;
 };
 
 #endif

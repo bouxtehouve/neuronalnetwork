@@ -1,4 +1,3 @@
-#pragma once
 #include "Network.h"
 #include <vector>
 #include <iostream>
@@ -7,20 +6,6 @@
 
 using namespace std;
 
-/*
-Network::Network(const vector<unsigned> &architecture, const TransfertFunction &transfertFunction,Parameters p){
-m_parameters = Parameters(p);
-
-unsigned numLayers = architecture.size();
-for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
-m_layers.push_back(Layer());
-unsigned numOutputs = layerNum == architecture.size() - 1 ? 0 : architecture[layerNum + 1];
-for (unsigned neuronNum = 0; neuronNum <= architecture[layerNum]; ++neuronNum){
-m_layers.back().push_back(Neuron(numOutputs, neuronNum, transfertFunction));
-}
-}
-}
-*/
 Network::Network(double eta, double alpha, Transfert choice){
 	m_eta = eta;
 	m_alpha = alpha;
@@ -30,9 +15,9 @@ Network::Network(double eta, double alpha, Transfert choice){
 	m_count_error = 0;
 	
 	vector<unsigned> architecture;
-	architecture.push_back(784);
+	architecture.push_back(784);		// 784=number of pixels
 	architecture.push_back(500);
-	architecture.push_back(10);
+	architecture.push_back(10);			// 10=number of digits (10)
 
 	unsigned numLayers = architecture.size();
 	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
@@ -43,7 +28,6 @@ Network::Network(double eta, double alpha, Transfert choice){
 		}
 	}
 }
-
 
 
 void Network::training(const std::vector<std::vector<double> > &inputValsTab, const std::vector<std::vector<double> > &outputValsTab){
@@ -58,17 +42,13 @@ void Network::training(const std::vector<std::vector<double> > &inputValsTab, co
 void Network::singleTraining(const std::vector<double> &inputVals, const std::vector<double> &outputVals){
 	// Get new input data and feed it forward:
 	Network::feedForwardNetwork(inputVals);
-
 	// Collect the net's actual output results:
 	//Network::getResultsNetwork(resultValues);
 
 	// Train the net what the outputs should have been:
 	Network::backPropNetwork(outputVals);
-
 	// Report how well the training is working, average over recent samples:
 	std::cout << m_recentAverageError << "\n" << endl;
-	// gp << "plot " << recentAverageError<<endl;
-
 }
 
 //This function sends the output value obtained by the neuron network with the last inputs entered
@@ -129,7 +109,6 @@ void Network::backPropNetwork(const vector<double> &targetVals){
 	// Calculate overall net error 'RMS of the output neuron errors)
 	Layer &outputLayer = m_layers.back();
 	m_error = 0.0;
-
 	for (unsigned n = 0; n < outputLayer.size() - 1; ++n){
 		double delta = targetVals[n] - outputLayer[n].getOutputVal();
 		m_error += delta*delta;
@@ -153,7 +132,6 @@ void Network::backPropNetwork(const vector<double> &targetVals){
 	for (unsigned layerNum = m_layers.size() - 2; layerNum > 0; --layerNum){
 		Layer &hiddenLayer = m_layers[layerNum];
 		Layer &nextLayer = m_layers[layerNum + 1];
-
 		for (unsigned n = 0; n < hiddenLayer.size()-1; ++n){
 			hiddenLayer[n].calcHiddenGradients(nextLayer);
 		}
