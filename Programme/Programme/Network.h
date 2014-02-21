@@ -11,19 +11,19 @@ public:
 	//Pour une valeur d'input donnee, fait progresser l'information jusqu'a la derniere couche
 	void backPropNetwork(const std::vector<double> &targetVals);
 	//Effectue une retropropagation du gradient selon les valeurs que l'on aurait voulu avoir pour un input sur la couche de sortie
-	//Je te conseille de prendre pour targetVal le vecteur (0,0,...1,0,...,0) de longueur 10, le 1 est pour le chiffre de 0 Ã  9 correspondant
-	// J'espÃ¨re que cette fonction fait bien ce qu'on dit !
+	//Je te conseille de prendre pour targetVal le vecteur (0,0,...1,0,...,0) de longueur 10, le 1 est pour le chiffre de 0 à 9 correspondant
+	// J'espère que cette fonction fait bien ce qu'on dit !
 	void getResultsNetwork(std::vector<double> &resultVals);
-	//resultVals est modifie pour valoir le vecteur de ce que renvoie le rÃ©seau sur la derniÃ¨re couche ( Ã©tant donnÃ© les derniers inputs feedforward )
+	//resultVals est modifie pour valoir le vecteur de ce que renvoie le réseau sur la dernière couche ( étant donné les derniers inputs feedforward )
 	int interpretResults(std::vector<double> &resultVals);
-	// Renvoie le digit correspondant a getResultsNetwork ( en gros, si la i-Ã¨me neurone de la derniÃ¨re couche renvoie la valeur max, alors le rÃ©seau a reconnu comme un i l'input
+	// Renvoie le digit correspondant a getResultsNetwork ( en gros, si la i-ème neurone de la dernière couche renvoie la valeur max, alors le réseau a reconnu comme un i l'input
 
 	void training(const std::vector<std::vector<double> > &inputValsTab, const std::vector<std::vector<double> > &outputValsTab);
-	// rÃ©pÃ©tition de singletraining sur un vecteur d'input/output
+	// répétition de singletraining sur un vecteur d'input/output
 	void singleTraining(const std::vector<double> &inputVals, const std::vector<double> &outputVals);
-	// prend en entrÃ©e un vecteur input, en sortie l'output voulu ( 0,...1,...0 ) donc, et amÃ©liore le rÃ©seau par rÃ©tropropagation
+	// prend en entrée un vecteur input, en sortie l'output voulu ( 0,...1,...0 ) donc, et améliore le réseau par rétropropagation
 	void singleTesting(const std::vector<double> &inputVals, int &wanted_digit);
-	// (pour la gui) une fois le rÃ©seau entraÃ®nÃ©, regarde pour un input donnÃ© si on reconnaÃ®t bien et modifie le taux d'erreur en attribut
+	// (pour la gui) une fois le réseau entraîné, regarde pour un input donné si on reconnaît bien et modifie le taux d'erreur en attribut
 
 	std::vector <Layer> m_layers;
 	double m_error;

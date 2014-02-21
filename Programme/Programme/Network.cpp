@@ -16,7 +16,6 @@ m_layers.push_back(Layer());
 unsigned numOutputs = layerNum == architecture.size() - 1 ? 0 : architecture[layerNum + 1];
 for (unsigned neuronNum = 0; neuronNum <= architecture[layerNum]; ++neuronNum){
 m_layers.back().push_back(Neuron(numOutputs, neuronNum, transfertFunction));
-cout << "Made a Neuron!" << endl;
 }
 }
 }
@@ -28,14 +27,13 @@ Network::Network(double eta, double alpha, Transfert choice, std::vector<unsigne
 	m_error_testing = 0;
 	m_count = 0;
 	m_count_error = 0;
-
+	
 	unsigned numLayers = architecture.size();
 	for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum){
 		m_layers.push_back(Layer());
 		unsigned numOutputs = layerNum == architecture.size() - 1 ? 0 : architecture[layerNum + 1];
 		for (unsigned neuronNum = 0; neuronNum <= architecture[layerNum]; ++neuronNum){
 			m_layers.back().push_back(Neuron(numOutputs, neuronNum, m_transfertFunction));
-			cout << "Made a Neuron!" << endl;
 		}
 	}
 }
@@ -44,7 +42,7 @@ Network::Network(double eta, double alpha, Transfert choice, std::vector<unsigne
 
 void Network::training(const std::vector<std::vector<double> > &inputValsTab, const std::vector<std::vector<double> > &outputValsTab){
 
-	for (int i = 0; i < inputValsTab.size(); i++){
+	for (int i = 0; i < inputValsTab.size()-1; i++){
 		Network::singleTraining(inputValsTab[i], outputValsTab[i]);
 	}
 
@@ -78,7 +76,7 @@ void Network::getResultsNetwork(vector<double> &resultVals){
 int Network::interpretResults(std::vector<double> &resultVals){
 	int pos = 0;
 	int max = resultVals[0];
-	for (unsigned n =0; n < resultVals.size(); ++n)
+	for (unsigned n =0; n < resultVals.size()-1; ++n)
 	{
 		if (resultVals[n] > max)
 		{
@@ -95,12 +93,12 @@ int Network::interpretResults(std::vector<double> &resultVals){
 void Network::feedForwardNetwork(const vector<double> &inputVals){
 
 	//Assign the input values into the input neurons
-	for (unsigned i = 0; i<inputVals.size(); ++i){
+	for (unsigned i = 0; i<inputVals.size()-1; ++i){
 		m_layers[0][i].setOutputVal(inputVals[i]);
 	}
 
 	//Forward propragate
-	for (unsigned layerNum = 1; layerNum < m_layers.size(); ++layerNum){
+	for (unsigned layerNum = 1; layerNum < m_layers.size()-1; ++layerNum){
 		Layer &prevLayer = m_layers[layerNum - 1];
 		for (unsigned n = 0; n< m_layers[layerNum].size() - 1; ++n){
 			m_layers[layerNum][n].feedForwardNeuron(prevLayer);
@@ -150,7 +148,7 @@ void Network::backPropNetwork(const vector<double> &targetVals){
 		Layer &hiddenLayer = m_layers[layerNum];
 		Layer &nextLayer = m_layers[layerNum + 1];
 
-		for (unsigned n = 0; n < hiddenLayer.size(); ++n){
+		for (unsigned n = 0; n < hiddenLayer.size()-1; ++n){
 			hiddenLayer[n].calcHiddenGradients(nextLayer);
 		}
 	}
@@ -159,7 +157,7 @@ void Network::backPropNetwork(const vector<double> &targetVals){
 	for (unsigned layerNum = m_layers.size() - 1; layerNum > 0; --layerNum){
 		Layer &layer = m_layers[layerNum];
 		Layer &prevLayer = m_layers[layerNum - 1];
-		for (unsigned n = 0; n < layer.size(); ++n){
+		for (unsigned n = 0; n < layer.size()-1; ++n){
 			layer[n].updateInputWeights(prevLayer, m_eta, m_alpha);
 		}
 	}
