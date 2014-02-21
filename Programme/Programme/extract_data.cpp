@@ -86,7 +86,13 @@ vector<double> gestion_data::labels_data(string aim)
 double gestion_data::output_bmp(int l)
 {
 	vector <vector <double> > v;
-	v=images_data("test");		// no need to build images while training the network
+	// no need to build images while training the network
+	if (m_images.size() == 0){
+		v=images_data("test");
+	}
+	else {
+		v = m_images;
+	}
 	vector <double> w;
 	w=v.at(l);		// select an image in the vector of images
 
@@ -105,7 +111,12 @@ double gestion_data::output_bmp(int l)
 
 	AnImage.WriteToFile("Output.bmp");		// name of output file
 	vector <double> y;
-	y=labels_data("test");
+	if (m_labels.size() == 0){
+		y=labels_data("test");
+	}
+	else {
+		y = m_labels;
+	}
 	return y.at(l);
 }
 
