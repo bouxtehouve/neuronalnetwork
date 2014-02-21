@@ -7,7 +7,6 @@ int main(){
 	Network rdn(eta, alpha, TAN);
     cout<<"Network created"<<endl;
     rdn.data_training();
-    cout<<"very good"<<endl;
     rdn.consoleTesting();
     return 0;
 }

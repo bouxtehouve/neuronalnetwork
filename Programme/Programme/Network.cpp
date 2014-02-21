@@ -12,7 +12,7 @@ Network::Network(double eta, double alpha, Transfert choice){
 	
 	vector<unsigned> architecture;
 	architecture.push_back(784);		// 784=number of pixels
-    architecture.push_back(15);
+    architecture.push_back(30);
 	architecture.push_back(10);			// 10=number of digits (10)
 
 	unsigned numLayers = architecture.size();
@@ -40,7 +40,7 @@ void Network::singleTraining(const std::vector<double> &inputVals, const std::ve
 	// Get new input data and feed it forward:
 	Network::feedForwardNetwork(inputVals);
 	// Collect the net's actual output results:
-	//Network::getResultsNetwork(resultValues);
+    	//Network::getResultsNetwork(resultVals);
 
 	// Train the net what the outputs should have been:
 	Network::backPropNetwork(outputVals);
@@ -59,7 +59,7 @@ void Network::getResultsNetwork(vector<double> &resultVals){
 int Network::interpretResults(std::vector<double> &resultVals){
 	int pos = 0;
 	int max = resultVals[0];
-	for (unsigned n =0; n < resultVals.size()-1; ++n)
+    for (unsigned n =0; n < resultVals.size(); ++n)
 	{
 		if (resultVals[n] > max)
 		{
@@ -105,14 +105,16 @@ void Network::consoleTesting()
 {
     m_count = 0;
     gestion_data data;
+    cout<<"Loading the testing data..."<<endl;
     vector <vector<double> > images = data.images_data("test");
     vector<vector<double> > output_values = data.output_data("test");
+    cout<<"Done."<<endl;
     while (m_count < 10000)
     {
         m_count +=1;
         cout<<"Press 1 to test the network or 0 to quit !"<<endl;
         int n;
-        cin >> n;
+        cin>> n;
         if(n == 1)
         {
             // We pick up the next written digit and corresponding label
@@ -130,7 +132,7 @@ void Network::consoleTesting()
             }
             cout<<"The updated error rate for the network is"<<m_error_testing<<endl;
         }
-        else if (n == 2)
+        else if (n == 0)
         {
             return;
         }
@@ -191,6 +193,6 @@ void Network::data_training(void){
 	vector <vector<double> > images = data.images_data("train");
 	vector<vector<double> > output_values = data.output_data("train");
     cout<<"Beginning training of the network..."<<endl;
-	Network::training(images, output_values);
+    Network::training(images, output_values);
     cout<<"Training Done."<<endl;
 }
