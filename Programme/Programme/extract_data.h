@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-class data
+class gestion_data
 {
 public:
 	vector <vector<double> > images_data(string aim);	// aim = 'test' or 'train'
@@ -34,6 +34,12 @@ public:
 	create a image of pixels extracted from images_data, path of image: in current project
 	also return label corresponding to the pixel
 	*/
+
+	vector <vector<double> > output_data(string aim);
+	/*
+	 returns a vector of double vectors of size 10 that look like (0,...1,...0)
+	 the 1 is placed where the digit label corresponds
+	 */
 
 	string get_path();
 	/*

@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "TransfertFunction.h"
+#include "extract_data.h"
 
 using namespace std;
 
@@ -162,4 +163,11 @@ void Network::backPropNetwork(const vector<double> &targetVals){
 		}
 	}
 
+}
+
+void Network::data_training(void){
+	gestion_data data;
+	vector <vector<double> > images = data.images_data("train");
+	vector<vector<double> > output_values = data.output_data("train");
+	Network::training(images, output_values);
 }

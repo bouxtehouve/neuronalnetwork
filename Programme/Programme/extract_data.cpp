@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-string data::get_path()
+string gestion_data::get_path()
 {
 	string path;
 	path=__FILE__;
@@ -16,7 +16,7 @@ string data::get_path()
 	return path;
 }
 
-vector <vector<double> > data::images_data(string aim)
+vector <vector<double> > gestion_data::images_data(string aim)
 {
 	string file_name;
 	vector <vector<double> > v_images;
@@ -52,7 +52,7 @@ vector <vector<double> > data::images_data(string aim)
 	}
 }
 
-vector<double> data::labels_data(string aim)
+vector<double> gestion_data::labels_data(string aim)
 {
 	string file_name;
 	vector<double> v_labels;
@@ -80,7 +80,9 @@ vector<double> data::labels_data(string aim)
 	}
 }
 
-double data::output_bmp(int l)
+
+
+double gestion_data::output_bmp(int l)
 {
 	vector <vector <double> > v;
 	v=images_data("test");		// no need to build images while training the network
@@ -106,7 +108,19 @@ double data::output_bmp(int l)
 	return y.at(l);
 }
 
-int data::rand_digit()
+vector<vector<double> > gestion_data::output_data(string aim){
+	vector<double> labels = labels_data(aim);
+	vector<vector<double> > output_data;
+	for (int i = 0; i<labels.size(); ++i){
+		for (unsigned k = 0; k<10; ++k){
+			if (k == labels[i]) output_data[i].push_back(1);
+				else output_data[i].push_back(0);
+			}
+		}
+	return output_data;
+}
+
+int gestion_data::rand_digit()
 {
 	srand(time(NULL)); // initialization of rand
 	return static_cast<int>(rand() % 10000);
