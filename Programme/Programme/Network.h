@@ -1,6 +1,8 @@
-#pragma once
+#ifndef NETWORK_H
+#define NETWORK_H
 #include "Neuron.h"
 #include "TransfertFunction.h"
+#include "extract_data.h"
 
 class Network{
 	typedef std::vector<Neuron> Layer;
@@ -39,3 +41,5 @@ public:
 	Transfert m_transfertFunction;
 
 };
+
+#endif

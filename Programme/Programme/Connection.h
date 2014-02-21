@@ -1,3 +1,5 @@
+#ifndef CONNECTION_H
+#define CONNECTION_H
 // A connection is two double which are used for each neuron's next neuron. It consits in the weight and the deltaweight
 class Connection{
 
@@ -9,3 +11,4 @@ public:
 	Connection(Connection const &connect){ weight = connect.weight; deltaWeight = connect.deltaWeight; };
 
 };
+#endif

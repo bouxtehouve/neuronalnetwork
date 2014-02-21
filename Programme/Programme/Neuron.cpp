@@ -1,8 +1,4 @@
 #include "Neuron.h"
-#include <iostream>
-using namespace std;
-
-
 
 Neuron::Neuron(unsigned numOutputs, unsigned myIndex, const Transfert f){
 	for (unsigned c = 0; c<numOutputs; ++c){

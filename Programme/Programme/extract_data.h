@@ -1,10 +1,11 @@
-#ifndef extract_data
-#define extract_data
-
+#ifndef EXTRACT_DATA_H
+#define EXTRACT_DATA_H
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+#include "EasyBMP.h"
+#include <time.h>
 using namespace std;
 
 class gestion_data

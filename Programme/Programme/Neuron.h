@@ -1,4 +1,5 @@
-#pragma once;
+#ifndef NEURON_H
+#define NEURON_H
 #include <vector>
 #include "Connection.h"
 #include "TransfertFunction.h"
@@ -31,3 +32,5 @@ private:
 
 	enum Transfert m_transfertFunction;
 };
+
+#endif

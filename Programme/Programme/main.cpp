@@ -1,10 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include "extract_data.h"
 #include "Network.h"
-#include "EasyBMP.h" // external library using namespace std; using namespace std;
 
 int main(){
 

@@ -1,8 +1,4 @@
 #include "Network.h"
-#include <vector>
-#include <iostream>
-#include "TransfertFunction.h"
-#include "extract_data.h"
 
 using namespace std;
 

@@ -1,11 +1,4 @@
 #include "extract_data.h"
-#include "EasyBMP.h"
-#include <time.h>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <vector>
-using namespace std;
 
 string gestion_data::get_path()
 {

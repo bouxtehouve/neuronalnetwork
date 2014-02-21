@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TRANSFERTFUNCTION_H
+#define TRANSFERTFUNCTION_H
 #include <cmath>
 
 
@@ -32,3 +33,4 @@ public:
 		return 1 - x*x;
 	};
 };
+#endif
